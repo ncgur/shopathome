@@ -11,9 +11,6 @@
       }
     }
   },
-  "networking": {
-    "allowedIpRanges": ["AzureFrontDoor.Backend"]
-  },
   "forwardingGateway": {
     "requiredHeaders": {
       "X-Azure-FDID" : "f9acd587-e77b-49b6-9a67-8d371af3568f"
