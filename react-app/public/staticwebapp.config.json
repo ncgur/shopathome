@@ -11,7 +11,17 @@
       }
     }
   },
-  
+  "networking": {
+    "allowedIpRanges": ["AzureFrontDoor.Backend"]
+  },
+  "forwardingGateway": {
+    "requiredHeaders": {
+      "X-Azure-FDID" : "f9acd587-e77b-49b6-9a67-8d371af3568f"
+    },
+    "allowedForwardedHosts": [
+      "swa-a2cka6gfbdgec0c4.z01.azurefd.net"
+    ]
+  },  
   "routes": [
     {
       "route": "/api/products/*",
@@ -47,6 +57,10 @@
     {
       "route": "/.auth/login/twitter",
       "statusCode": 404
+    },
+    {
+      "route": "/*",
+      "allowedRoles": ["authenticated"]
     }
     
   ],
