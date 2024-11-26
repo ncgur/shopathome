@@ -1,5 +1,17 @@
 {
   "platform": { "apiRuntime": "node:18" },
+  "auth": {
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "registration": {
+          "openIdIssuer": "https://login.microsoftonline.com/2dfb0070-9d96-41b9-be72-8df3867e4371/v2.0",
+          "clientIdSettingName": "AAD_CLIENT_ID",
+          "clientSecretSettingName": "AAD_CLIENT_SECRET"
+        }
+      }
+    }
+  },
+  
   "routes": [
     {
       "route": "/api/products/*",
@@ -15,6 +27,11 @@
       "allowedRoles": ["authenticated"]
     },
     {
+      "route": "/login",
+      "rewrite": "/.auth/login/aad",
+      "allowedRoles": ["anonymous", "authenticated"]
+    },
+    {
       "route": "/logout",
       "redirect": "/.auth/logout"
     },
@@ -24,20 +41,29 @@
       "statusCode": 301
     },
     {
-      "route": "/.auth/login/aad",
+      "route": "/.auth/login/github",
+      "statusCode": 404
+    },
+    {
+      "route": "/.auth/login/twitter",
       "statusCode": 404
     }
+    
   ],
   "navigationFallback": {
     "rewrite": "index.html",
     "exclude": ["/*.{css,scss,js,png,gif,ico,jpg}"]
   },
   "responseOverrides": {
+    "401": {
+      "statusCode": 302,
+      "redirect": "/.auth/login/aad"
+    },  
     "404": {
       "rewrite": "/404.html"
     }
   },
   "mimeTypes": {
     ".json": "text/json"
-  }
+  } 
 }
