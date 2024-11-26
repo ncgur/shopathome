@@ -1,18 +1,31 @@
 {
-  "platform": { "apiRuntime": "node:18" },
+  "platform": {
+    "apiRuntime": "node:18"
+  },
   "routes": [
     {
       "route": "/api/products/*",
-      "methods": ["GET", "PUT", "POST", "DELETE"],
-      "allowedRoles": ["authenticated"]
+      "methods": [
+        "GET",
+        "PUT",
+        "POST",
+        "DELETE"
+      ],
+      "allowedRoles": [
+        "authenticated"
+      ]
     },
     {
       "route": "/api/discounts/*",
-      "allowedRoles": ["preferred"]
+      "allowedRoles": [
+        "preferred"
+      ]
     },
     {
       "route": "/api/*",
-      "allowedRoles": ["authenticated"]
+      "allowedRoles": [
+        "authenticated"
+      ]
     },
     {
       "route": "/logout",
@@ -22,15 +35,14 @@
       "route": "/deals",
       "redirect": "/some-legacy-discounts-page.html",
       "statusCode": 301
-    },
-    {
-      "route": "/.auth/login/aad",
-      "statusCode": 404
     }
   ],
   "navigationFallback": {
     "rewrite": "index.html",
-    "exclude": ["/*.{css,scss,js,png,gif,ico,jpg}", "/images/*"]
+    "exclude": [
+      "/*.{css,scss,js,png,gif,ico,jpg}",
+      "/images/*"
+    ]
   },
   "responseOverrides": {
     "404": {
