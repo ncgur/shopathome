@@ -19,7 +19,8 @@
       "X-Azure-FDID" : "f9acd587-e77b-49b6-9a67-8d371af3568f"
     },
     "allowedForwardedHosts": [
-      "swa-a2cka6gfbdgec0c4.z01.azurefd.net"
+      "swa-a2cka6gfbdgec0c4.z01.azurefd.net",
+      "swa2-h8fbbxbgceezgfau.z01.azurefd.net"
     ]
   },  
   "routes": [
